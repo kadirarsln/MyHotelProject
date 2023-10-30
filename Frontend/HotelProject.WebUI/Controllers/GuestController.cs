@@ -16,8 +16,6 @@ namespace HotelProject.WebUI.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
-
-
         public async Task<IActionResult> GuestIndex()
         {
             var client = _httpClientFactory.CreateClient();                                          // Consume için istemci oluşturuldu.
