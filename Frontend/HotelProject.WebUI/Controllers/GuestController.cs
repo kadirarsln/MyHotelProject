@@ -61,7 +61,7 @@ namespace HotelProject.WebUI.Controllers
             var responseMessage = await client.DeleteAsync($"http://localhost:62391/api/Guest/{id}");   // Delete işlemi için id parametresi ekledik.
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("StaffIndex");
+                return RedirectToAction("GuestIndex");
             }
             return View();
         }
