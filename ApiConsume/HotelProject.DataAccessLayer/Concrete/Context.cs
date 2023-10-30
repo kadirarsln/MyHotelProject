@@ -15,6 +15,24 @@ namespace HotelProject.DataAccessLayer.Concrete
         {
             optionsBuilder.UseSqlServer("server=Kadir\\SQLEXPRESS;initial catalog=ApiOtelDb;integrated security=true ;TrustServerCertificate=true");
         }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<Room>(entry =>
+            {
+                entry.ToTable("Rooms", tb => tb.HasTrigger("Roomincrease"));
+            });
+            builder.Entity<Staff>(entry =>
+            {
+                entry.ToTable("Staffs", tb => tb.HasTrigger("StaffsIncrease"));
+            });
+            builder.Entity<Guest>(entry =>
+            {
+                entry.ToTable("Guests", tb => tb.HasTrigger("GuestIncrease"));
+            });
+        }
+
 
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Service> Services { get; set; }
@@ -23,5 +41,7 @@ namespace HotelProject.DataAccessLayer.Concrete
         public DbSet<Testimonial> Testimonials { get; set; }
         public DbSet<About> Abouts { get; set; }
         public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Guest> Guests { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
     }
 }
