@@ -1,5 +1,4 @@
-﻿using HotelProject.WebUI.Dtos.BookingDto;
-using HotelProject.WebUI.Dtos.ContactDto;
+﻿using HotelProject.WebUI.Dtos.ContactDto;
 //using HotelProject.WebUI.Dtos.MessageCategoryDto;
 using HotelProject.WebUI.Dtos.RoomDto;
 using Microsoft.AspNetCore.Authorization;

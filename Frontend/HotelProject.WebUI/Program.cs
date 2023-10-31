@@ -4,6 +4,9 @@ using HotelProject.DataAccessLayer.Concrete;
 using HotelProject.EntityLayer.Concrete;
 using HotelProject.WebUI.Dtos.GuestDto;
 using HotelProject.WebUI.ValidationRules.GuestValidationRules;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace HotelProject.WebUI
 {
@@ -22,8 +25,22 @@ namespace HotelProject.WebUI
             builder.Services.AddTransient<IValidator<UpdateGuestDto>, UpdateGuestValidator>();
             builder.Services.AddControllersWithViews().AddFluentValidation();
             
-
             builder.Services.AddAutoMapper(typeof(Program));
+
+            builder.Services.AddMvc(config =>
+            {
+                var policy=new AuthorizationPolicyBuilder()
+                .RequireAuthenticatedUser()
+                .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+            });
+
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromDays(1);
+                options.LoginPath = "/Login/LoginIndex";
+            });
 
             var app = builder.Build();
 
@@ -33,6 +50,8 @@ namespace HotelProject.WebUI
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseRouting();
 
