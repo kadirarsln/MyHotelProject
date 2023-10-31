@@ -4,16 +4,16 @@ using System.Net.Http.Headers;
 
 namespace HotelProject.WebUI.Controllers
 {
-    public class AdminFileImageController : Controller
+    public class AdminFileImageController1 : Controller
     {
         [HttpGet]
-        public IActionResult AdminFileImageIndex()
+        public IActionResult AdminFileImageIndex1()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> AdminFileImageIndex(IFormFile formFile)
+        public async Task<IActionResult> AdminFileImageIndex1(IFormFile formFile)
         {
             var stream = new MemoryStream();                                                           //Dosya yükleme işlemi 
             await formFile.CopyToAsync(stream);                                                         //Dosyayı ilgili akış üzerinden kopyalıyoruz.

@@ -24,7 +24,7 @@ namespace HotelProject.WebUI.Controllers
             MultipartFormDataContent multipartFormDataContent = new MultipartFormDataContent();
             multipartFormDataContent.Add(byteArrayContent, "formFile", formFile.FileName);                                          //ByteArray gelen değeri yükleriz.
             var httpClient = new HttpClient();
-            await httpClient.PostAsync("http://localhost:5240/api/FileImage", multipartFormDataContent);
+            await httpClient.PostAsync("http://localhost:62391/api/FileImage", multipartFormDataContent);
 
             return View();
         }
