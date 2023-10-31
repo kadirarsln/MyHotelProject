@@ -34,7 +34,7 @@ namespace HotelProject.WebUI
                 .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
-
+             
             builder.Services.ConfigureApplicationCookie(options =>
             {
                 options.Cookie.HttpOnly = true;
@@ -49,6 +49,10 @@ namespace HotelProject.WebUI
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404", "?code={0}");
+            app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseAuthentication();
