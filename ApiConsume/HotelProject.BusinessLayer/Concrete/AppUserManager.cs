@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HotelProject.BusinessLayer.Concrete
 {
-    public class AppUserManager : IAppUserService   
+    public class AppUserManager : IAppUserService
     {
         private readonly IAppUserDal _appUserDal;
 
@@ -21,6 +21,11 @@ namespace HotelProject.BusinessLayer.Concrete
         public void TDelete(AppUser delete)
         {
             throw new NotImplementedException();
+        }
+
+        public int TGetAppUserCount()
+        {
+            return _appUserDal.GetAppUserCount();
         }
 
         public AppUser TGetByID(int id)
