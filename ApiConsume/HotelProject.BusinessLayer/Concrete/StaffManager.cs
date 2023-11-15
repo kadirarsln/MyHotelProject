@@ -28,6 +28,11 @@ namespace HotelProject.BusinessLayer.Concrete
             return _staffDal.GetByID(id);
         }
 
+        public List<Staff> TGetLast4Staff()
+        {
+            return _staffDal.GetLast4Staff();
+        }
+
         public List<Staff> TGetList()
         {
             return _staffDal.GetList();
