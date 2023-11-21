@@ -33,28 +33,28 @@ namespace HotelProject.WebUI.ViewComponents.Dashboard
             }
 
 
-            //TWİTTER APİ
+    //        //TWİTTER APİ
 
-            var client2 = new HttpClient();
-            var request2 = new HttpRequestMessage
-            {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri("https://twitter32.p.rapidapi.com/getProfile?username=firatresmihesap"),
-                Headers =
-    {
-        { "X-RapidAPI-Key", "675275f19dmsh96ac5cbc88c9371p1dec00jsn358dc5db05b9" },
-        { "X-RapidAPI-Host", "twitter32.p.rapidapi.com" },
-    },
-            };
-            using (var response2 = await client2.SendAsync(request2))
-            {
-                response2.EnsureSuccessStatusCode();
-                var body2 = await response2.Content.ReadAsStringAsync();
-                ResultTwitterFollowersDto resultTwitterFollowersDtos = JsonConvert.DeserializeObject<ResultTwitterFollowersDto>(body2);
+    //        var client2 = new HttpClient();
+    //        var request2 = new HttpRequestMessage
+    //        {
+    //            Method = HttpMethod.Get,
+    //            RequestUri = new Uri("https://twitter32.p.rapidapi.com/getProfile?username=firatresmihesap"),
+    //            Headers =
+    //{
+    //    { "X-RapidAPI-Key", "675275f19dmsh96ac5cbc88c9371p1dec00jsn358dc5db05b9" },
+    //    { "X-RapidAPI-Host", "twitter32.p.rapidapi.com" },
+    //},
+    //        };
+    //        using (var response2 = await client2.SendAsync(request2))
+    //        {
+    //            response2.EnsureSuccessStatusCode();
+    //            var body2 = await response2.Content.ReadAsStringAsync();
+    //            ResultTwitterFollowersDto resultTwitterFollowersDtos = JsonConvert.DeserializeObject<ResultTwitterFollowersDto>(body2);
 
-                ViewBag.twitterFollowers = resultTwitterFollowersDtos.data.user_info.followers_count;
-                ViewBag.twitterFollowing = resultTwitterFollowersDtos.data.user_info.favourites_count;
-            }
+    //            ViewBag.twitterFollowers = resultTwitterFollowersDtos.data.user_info.followers_count;
+    //            ViewBag.twitterFollowing = resultTwitterFollowersDtos.data.user_info.favourites_count;
+    //        }
 
 
             //LİNKLEDİN APİ

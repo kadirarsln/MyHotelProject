@@ -1,0 +1,43 @@
+﻿using HotelProject.EntityLayer.Concrete;
+using HotelProject.WebUI.Models.Role;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+
+namespace HotelProject.WebUI.Controllers
+{
+    public class RoleAssignController : Controller
+    {
+        private readonly UserManager<AppUser> _userManager;
+        private readonly RoleManager<AppRole> _roleManager;
+        public RoleAssignController(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager)
+        {
+            _userManager = userManager;
+            _roleManager = roleManager;
+        }
+
+        public IActionResult RoleAssignIndex()
+        {
+            var values = _userManager.Users.ToList();
+            return View(values);
+        }
+
+        public async Task<IActionResult> AssignRole(int id)
+        {
+            var user = _userManager.Users.FirstOrDefault(x => x.Id == id);
+            TempData["userid"] = user.Id;
+            var roles=_roleManager.Roles.ToList();
+            var userRoles = await _userManager.GetRolesAsync(user);
+
+            List<RoleAssignViewModel> roleAssignViewModels= new List<RoleAssignViewModel>();
+            foreach (var item in roles)
+            {
+                RoleAssignViewModel roleModel = new RoleAssignViewModel();
+                roleModel.RoleID=item.Id;
+                roleModel.RoleName = item.Name;
+                roleModel.RoleExist = userRoles.Contains(item.Name);
+                roleAssignViewModels.Add(roleModel);
+            }
+            return View(roleAssignViewModels);
+        }
+    }
+}
