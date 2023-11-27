@@ -32,11 +32,10 @@
                     <td>
                         <span class="badge badge-primary px-2">@item.Status</span>
                     </td>
-                    <td><a href="/BookingAdmin/ApprovedReservation/@item.BookingID" class="btn btn-success">Onayla</a></td>
-                    <td><a href="#" class="btn btn-danger">İptal Et</a></td>
-                    <td><a href="#" class="btn btn-warning">Beklet</a></td>
-                    <td><a href="#" class="btn btn-info">Güncelle</a></td>
-                    <td><a href="#" class="btn btn-dark">Detaylar</a></td>
+                    <td><a href="/AdminBooking/ApprovedReservation2/@item.BookingID" class="btn btn-success">Onayla</a></td>
+                    <td><a href="/AdminBooking/CancelReservation/@item.BookingID" class="btn btn-danger">İptal Et</a></td>
+                    <td><a href="/AdminBooking/WaitReservation/@item.BookingID" class="btn btn-warning">Beklet</a></td>
+                    <td><a href="/AdminBooking/UpdateBooking/@item.BookingID" class="btn btn-info">Güncelle</a></td>
                 </tr>
             }
         </tbody>

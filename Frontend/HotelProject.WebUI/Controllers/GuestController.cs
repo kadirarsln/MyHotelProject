@@ -93,7 +93,7 @@ namespace HotelProject.WebUI.Controllers
                 }
                 return View();
             }
-            else { return View(); }
+            return View();
         }
 
     }
