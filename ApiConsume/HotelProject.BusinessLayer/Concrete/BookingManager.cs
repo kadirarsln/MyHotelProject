@@ -72,7 +72,7 @@ namespace HotelProject.BusinessLayer.Concrete
             _bookingDal.BookingStatusChangeCancel(id);
         }
 
-        public void tBookingStatusChangeWait(int id)
+        public void TBookingStatusChangeWait(int id)
         {
             _bookingDal.BookingStatusChangeWait(id);
         }
